@@ -1,6 +1,6 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 import times from 'npm:lodash/times';
-import constant from 'npm:lodash/constant';
 
 const {
   attr,
@@ -10,6 +10,8 @@ const {
 export default DS.Model.extend({
   title: attr("string"),
   choices: hasMany("choice", { async: true }),
+
+  errors: [],
 
   ready() {
     const choices = this.get("choices");
@@ -30,5 +32,23 @@ export default DS.Model.extend({
   removeChoice(index) {
     const choices = this.get("choices");
     choices.removeAt(index, 1);
-  }
+  },
+
+  isValid: Ember.computed("choices.@each.body", function() {
+    let errors = [];
+    const filledChoices = this.get("choices").filter((choice) => {
+      return !Ember.isBlank(choice.get("body"));
+    });
+
+    if (filledChoices.length <= 1) {
+      errors.pushObject("Please fill in choices greater than 1");
+    }
+
+    this.set("errors", errors);
+    return errors.length === 0;
+  }),
+
+  isInvalid: Ember.computed("isValid", function() {
+    return !this.get("isValid");
+  }),
 });

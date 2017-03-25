@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  isSubmitted: false,
+
   actions: {
     addChoice() {
       this.get("questionary").addChoice();
@@ -14,6 +16,10 @@ export default Ember.Component.extend({
           window.confirm("Really want to remove? (this operation is can't undo)")) {
         questionary.removeChoice(index);
       }
+    },
+
+    submit() {
+      this.set("isSubmitted", true);
     }
   },
 });
