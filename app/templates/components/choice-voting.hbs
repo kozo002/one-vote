@@ -1,0 +1,14 @@
+<li class="choice {{if isVoted "active"}}">
+  <div class="choice__bg">
+    {{#if isAnyVoted}}
+      <div class="choice__rate-bar"></div>
+    {{/if}}
+  </div>
+  <div class="choice__fg">
+    <a href="#" {{action "vote" choice}}>{{choice.body}}</a>
+    {{#if isVoted}}
+      <i class="choice__mark material-icons text-primary">check</i>
+    {{/if}}
+    <div class="choice__rate-number">{{choice.votesCount}}%</div>
+  </div>
+</li>

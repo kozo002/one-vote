@@ -7,24 +7,22 @@
         </header>
         <div>
           <ol class="choices">
-            {{#each questionary.choices as |choice|}}
-              <li class="choice">
-                <div class="choice__bg">
-                  <!--<div class="choice__rate-bar"></div>-->
-                </div>
-                <div class="choice__fg">
-                  <a href="#">{{choice.body}}</a>
-                  <!--<i class="choice__mark material-icons text-primary">check</i>-->
-                  <!--<div class="choice__rate-number">20%</div>-->
-                </div>
-              </li>
+            {{#each questionary.choices as |choice i|}}
+              {{choice-voting
+                choice=choice
+                isAnyVoted=isVoted
+                isVoted=(compare i "===" votedIndex)
+                onVote="vote"
+              }}
             {{/each}}
           </ol>
           <dl class="row pt-4 pb-4">
-            <!--<dt class="col-5 col-sm-4 ">Total votes</dt>
-            <dd class="col-7 col-sm-8 ">15</dd>
-            <dt class="col-5 col-sm-4 ">Started at</dt>
-            <dd class="col-7 col-sm-8 ">2017-03-25 10:00</dd>-->
+            {{#if isVoted}}
+              <dt class="col-5 col-sm-4">Total votes</dt>
+              <dd class="col-7 col-sm-8">{{questionary.totalVotesCount}}</dd>
+              <dt class="col-5 col-sm-4 mb-2">Started at</dt>
+              <dd class="col-7 col-sm-8 mb-2">{{questionary.createdAt}}</dd>
+            {{/if}}
             <dd class="col-12">
               <a href="#" class="text-muted">
                 <i class="material-icons"><small>link</small></i>
