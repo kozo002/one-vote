@@ -16,7 +16,7 @@ export default DS.Model.extend({
   ready() {
     const choices = this.get("choices");
     const store = this.get("store");
-    if (choices.length > 0) { return; }
+    if (choices.get("length") > 0) { return; }
 
     times(3, () => {
       choices.pushObject(store.createRecord("choice"));
