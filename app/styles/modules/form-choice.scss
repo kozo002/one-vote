@@ -1,0 +1,19 @@
+.form-choice {
+  position: relative;
+
+  @media (max-width: map-get($grid-breakpoints, sm)) {
+    padding-right: 40px;
+  }
+
+  &__remove {
+    position: absolute;
+    top: 50%;
+    right: 4px;
+    transform: translateY(-50%);
+
+    @media (min-width: map-get($grid-breakpoints, sm)) {
+      left: 100%;
+      margin-left: 8px;
+    }
+  }
+}

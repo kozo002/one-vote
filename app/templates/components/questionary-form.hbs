@@ -12,17 +12,25 @@
             value=questionary.title
           }}
         </div>
+        {{#each questionary.choices as |choice index|}}
+          {{#if (compare index "===" 0)}}
+            <label>Choices</label>
+          {{/if}}
+          <div class="form-group form-choice">
+            {{textarea
+              autoresize=true
+              rows=1
+              class="form-control not-resizable"
+              placeholder=(choice-example index)
+              value=choice.body
+            }}
+            <a href="#" class="form-choice__remove" {{action "removeChoice" index}} tabindex="-1">
+              <i class="material-icons">close</i>
+            </a>
+          </div>
+        {{/each}}
         <div class="form-group">
-          <label>Choices</label>
-          {{textarea
-            autoresize=true
-            rows=1
-            class="form-control not-resizable"
-            placeholder="ex: Cappuccino"
-          }}
-        </div>
-        <div class="form-group">
-          <a href="#" class="btn btn-link">
+          <a href="#" class="btn btn-link" {{action "addChoice"}}>
             <i class="material-icons">add</i>
             <span>Add choice</span>
           </a>
