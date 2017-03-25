@@ -51,4 +51,11 @@ export default DS.Model.extend({
   isInvalid: Ember.computed("isValid", function() {
     return !this.get("isValid");
   }),
+
+  totalVotesCount: Ember.computed("choices.@each.votesCount", function() {
+    return this.get("choices").reduce((res, choice) => {
+      res += choice.get("votesCount");
+      return res;
+    }, 0);
+  }),
 });
