@@ -1,0 +1,95 @@
+.choices {
+  padding: 0;
+  list-style: none;
+}
+
+.choice {
+  position: relative;
+  margin: 0 0 16px 0;
+
+  @media (max-width: map-get($grid-breakpoints, sm)) {
+    padding-right: 40px;
+  }
+
+  &.active {
+    a {
+      border-color: $brand-primary;
+      color: $brand-primary;
+    }
+
+    .choice__rate-bar {
+      background-color: lighten($brand-primary, 30%);
+    }
+    .choice__rate-number {
+      color: $brand-primary;
+    }
+  }
+
+  a {
+    @extend .form-control;
+    padding-right: 40px;
+    background-color: transparent;
+
+    &:hover {
+      border-color: $brand-primary;
+      color: $brand-primary;
+      text-decoration: none;
+    }
+
+    &[disabled] {
+      cursor: default;
+      border-color: rgba(0, 0, 0, 0.15);
+      color: $base-text-color;
+    }
+  }
+
+  &__bg {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    border-radius: 3px;
+  }
+
+  &__fg {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__mark {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      right: 8px;
+    }
+  }
+
+  &__rate-number {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    margin-left: 8px;
+
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      right: 4px;
+    }
+  }
+
+  &__rate-bar {
+    transition: all .25s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background-color: lighten($gray-lighter, 2%);
+    width: 50%;
+  }
+}
