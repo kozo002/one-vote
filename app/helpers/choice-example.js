@@ -9,7 +9,7 @@ export function choiceExample(params/*, hash*/) {
     "Caffe Latte",
     "Latte Macchiato",
     "Espresso Macchiato",
-  ]
+  ];
   const type = types[index];
   return type === undefined ? "" : `ex: ${types[index]}`;
 }
