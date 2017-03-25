@@ -1,0 +1,22 @@
+body,
+input,
+button,
+textarea {
+  color: $base-text-color;
+  letter-spacing: 1.5px;
+  font-size: $base-font-size;
+  font-family:
+    "Open Sans",
+    "Helvetica Neue", Helvetica,
+    Arial,
+    "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",
+    sans-serif
+  ;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.material-icons {
+  vertical-align: text-bottom;
+  line-height: 1rem;
+}

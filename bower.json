@@ -1,5 +1,6 @@
 {
   "name": "one-vote",
   "dependencies": {
+    "bootstrap": "~v4.0.0-alpha.4"
   }
 }

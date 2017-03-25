@@ -1,0 +1,10 @@
+.form-control {
+  &.not-resizable {
+    resize: none;
+  }
+
+  &.form-control-lg {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
