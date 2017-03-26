@@ -21,6 +21,7 @@ export default Ember.Component.extend({
 
   actions: {
     vote(choice) {
+      if (this.get("isVoted")) { return; }
       choice.addVoteBy(this.guestKey.get("value"));
     },
   },
