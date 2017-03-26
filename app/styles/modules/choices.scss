@@ -31,8 +31,14 @@
     background-color: transparent;
 
     &:hover {
+      background-color: transparent;
       border-color: $brand-primary;
       color: $brand-primary;
+      text-decoration: none;
+    }
+
+    &:focus {
+      background-color: transparent;
       text-decoration: none;
     }
 
