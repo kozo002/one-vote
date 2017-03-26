@@ -58,4 +58,18 @@ export default DS.Model.extend({
       return res;
     }, 0);
   }),
+
+  eachChoicesVotesCountChanged: Ember.observer("choices.@each.votesCount", function() {
+    const total = this.get("totalVotesCount");
+    const choices = this.get("choices");
+
+    if (total > 0) {
+      choices.forEach((choice) => {
+        const rate = Math.floor(choice.get("votesCount") / total * 100);
+        choice.set("rate", rate);
+      });
+    } else {
+      choices.forEach((choice) => choice.set("rate", 0));
+    }
+  }),
 });
