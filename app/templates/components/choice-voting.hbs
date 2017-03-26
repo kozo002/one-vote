@@ -9,6 +9,8 @@
     {{#if isVoted}}
       <i class="choice__mark material-icons text-primary">check</i>
     {{/if}}
-    <div class="choice__rate-number">{{choice.votesCount}}%</div>
+    {{#if isVoted}}
+      <div class="choice__rate-number">{{choice.rate}}%</div>
+    {{/if}}
   </div>
 </li>
