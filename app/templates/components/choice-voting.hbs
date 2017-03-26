@@ -5,7 +5,7 @@
     {{/if}}
   </div>
   <div class="choice__fg">
-    <a href="#" {{action "vote" choice}}>{{choice.body}}</a>
+    <a href="#" {{action "vote" choice}} disabled={{isDisabled}}>{{choice.body}}</a>
     {{#if isVoted}}
       <i class="choice__mark material-icons text-primary">check</i>
     {{/if}}
