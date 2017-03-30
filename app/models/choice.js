@@ -4,35 +4,35 @@ import Ember from 'ember';
 const {
   attr,
   belongsTo,
-  hasMany,
 } = DS;
 
 export default DS.Model.extend({
   body: attr("string"),
   questionary: belongsTo("questionary"),
-  votes: hasMany("vote"),
+  votes: attr("array"),
 
-  votesCount: Ember.computed("votes.@each", function() {
+  votesCount: Ember.computed("votes.[]", function() {
     return this.get("votes.length");
   }),
 
   isVotedBy(guestKey) {
-    const votes = this.get("votes");
-    const vote = votes.find((vote) => vote.get("guestKey") === guestKey);
+    const votes = this.get("votes") || [];
+    const vote = votes.find((gk) => gk === guestKey);
     return !Ember.isEmpty(vote);
   },
 
   addVoteBy(guestKey) {
     if (this.isVotedBy(guestKey)) { return; }
 
-    const store = this.get("store");
-    const votes = this.get("votes");
-    votes.pushObject(store.createRecord("vote", { guestKey }));
+    const votes = this.get("votes") || [];
+    votes.pushObject(guestKey);
+    this.set("votes", votes);
+    this.save();
   },
 
   loseVoteBy(guestKey) {
-    this.set("votes", this.get("votes").filter((vote) => {
-      return vote.get("guestKey") !== guestKey;
+    this.set("votes", this.get("votes").filter((gk) => {
+      return gk !== guestKey;
     }));
   }
 });
