@@ -1,0 +1,10 @@
+{
+  "projects": {
+    "default": "one-vote-ea795",
+    "public": "dist",
+    "rewrites": [{
+      "source": "**",
+      "destination": "/index.html"
+    }]
+  }
+}
