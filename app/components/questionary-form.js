@@ -20,6 +20,12 @@ export default Ember.Component.extend({
 
     submit() {
       this.set("isSubmitted", true);
-    }
+      const questionary = this.get("questionary");
+      if (questionary.get("isValid")) {
+        questionary.saveWithChoices().then(() => {
+          this.sendAction("onCreate", questionary);
+        });
+      }
+    },
   },
 });
