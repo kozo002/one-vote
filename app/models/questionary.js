@@ -72,4 +72,13 @@ export default DS.Model.extend({
       choices.forEach((choice) => choice.set("rate", 0));
     }
   }),
+
+  saveWithChoices() {
+    const choiceSaves = this.get("choices").map((choice) => {
+      return choice.save();
+    });
+    return Ember.RSVP.all(choiceSaves).then(() => {
+      this.save();
+    });
+  },
 });
