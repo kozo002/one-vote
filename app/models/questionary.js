@@ -9,7 +9,7 @@ const {
 
 export default DS.Model.extend({
   title: attr("string"),
-  choices: hasMany("choice", { async: true }),
+  choices: hasMany("choice", { async: true, inverse: null }),
 
   errors: [],
 
