@@ -2,6 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   isSubmitted: false,
+  isLoading: false,
+
+  saveButtonLabel: Ember.computed("isLoading", function() {
+    return this.get("isLoading") ? "Now Saving..." : "Start voting!!";
+  }),
 
   actions: {
     addChoice() {
@@ -22,7 +27,9 @@ export default Ember.Component.extend({
       this.set("isSubmitted", true);
       const questionary = this.get("questionary");
       if (questionary.get("isValid")) {
+        this.set("isLoading", true);
         questionary.saveWithChoices().then(() => {
+          this.set("isLoading", false);
           this.sendAction("onCreate", questionary);
         });
       }

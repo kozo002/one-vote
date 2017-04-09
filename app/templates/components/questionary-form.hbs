@@ -10,6 +10,7 @@
             class="form-control form-control-lg not-resizable"
             placeholder="ex: Which your favorite coffee?"
             value=questionary.title
+            disabled=isLoading
           }}
         </div>
         {{#if isSubmitted}}
@@ -32,21 +33,24 @@
               class="form-control not-resizable"
               placeholder=(choice-example index)
               value=choice.body
+              disabled=isLoading
             }}
             <a href="#" class="form-choice__remove" {{action "removeChoice" index}} tabindex="-1">
               <i class="material-icons">close</i>
             </a>
           </div>
         {{/each}}
-        <div class="form-group">
-          <a href="#" class="btn btn-link" {{action "addChoice"}}>
-            <i class="material-icons">add</i>
-            <span>Add choice</span>
-          </a>
-        </div>
+        {{#unless isLoading}}
+          <div class="form-group">
+            <a href="#" class="btn btn-link" {{action "addChoice"}}>
+              <i class="material-icons">add</i>
+              <span>Add choice</span>
+            </a>
+          </div>
+        {{/unless}}
         <div class="form-group text-center pt-3">
-          <button class="btn btn-outline-primary" {{action "submit"}}>
-            Start voting!!
+          <button class="btn btn-outline-primary" {{action "submit"}} disabled={{isLoading}}>
+            {{saveButtonLabel}}
           </button>
         </div>
       </form>
