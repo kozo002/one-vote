@@ -74,11 +74,10 @@ export default DS.Model.extend({
   }),
 
   saveWithChoices() {
-    const choiceSaves = this.get("choices").map((choice) => {
-      return choice.save();
-    });
-    return Ember.RSVP.all(choiceSaves).then(() => {
-      this.save();
-    });
+    if (!this.get("isValid")) { return; }
+    const choices = this.get("choices").filter((c) => Ember.isPresent(c.get("body")));
+    this.set("choices", choices);
+    const choiceSaves = choices.map((choice) => choice.save());
+    return Ember.RSVP.all(choiceSaves).then(() => this.save());
   },
 });
