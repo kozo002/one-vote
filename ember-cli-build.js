@@ -4,13 +4,6 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
-    dotEnv: {
-      path: {
-        development: ".env",
-        test: ".env",
-        production: ".env.production",
-      }
-    },
   });
 
   // Use `app.import` to add additional libraries to the generated

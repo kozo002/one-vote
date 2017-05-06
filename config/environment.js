@@ -17,14 +17,6 @@ module.exports = function(environment) {
       }
     },
 
-    firebase: {
-      apiKey: process.env.FIREBASE_API_KEY,
-      authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-      databaseURL: process.env.FIREBASE_DATABASE_URL,
-      storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-      messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-    },
-
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -32,6 +24,13 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+    ENV.firebase = {
+      apiKey: process.env.DEV_FIREBASE_API_KEY,
+      authDomain: process.env.DEV_FIREBASE_AUTH_DOMAIN,
+      databaseURL: process.env.DEV_FIREBASE_DATABASE_URL,
+      storageBucket: process.env.DEV_FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: process.env.DEV_FIREBASE_MESSAGING_SENDER_ID,
+    };
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -51,7 +50,13 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.firebase = {
+      apiKey: process.env.PROD_FIREBASE_API_KEY,
+      authDomain: process.env.PROD_FIREBASE_AUTH_DOMAIN,
+      databaseURL: process.env.PROD_FIREBASE_DATABASE_URL,
+      storageBucket: process.env.PROD_FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: process.env.PROD_FIREBASE_MESSAGING_SENDER_ID,
+    };
   }
 
   return ENV;
