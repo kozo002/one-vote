@@ -1,0 +1,33 @@
+.global-footer {
+  @media (min-width: map-get($grid-breakpoints, sm)) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &__nav {
+  }
+
+  &__nav-list {
+    @extend .clearfix;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__nav-item {
+    float: left;
+
+    a {
+      display: block;
+      padding: 8px 16px;
+      color: lighten($gray-light, 10%);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
