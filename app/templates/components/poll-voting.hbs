@@ -3,11 +3,11 @@
     <div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3">
       <article class="pt-5">
         <header class="pb-4">
-          <h1>{{questionary.title}}</h1>
+          <h1>{{poll.title}}</h1>
         </header>
         <div>
           <ol class="choices">
-            {{#each questionary.choices as |choice i|}}
+            {{#each poll.choices as |choice i|}}
               {{choice-voting
                 choice=choice
                 isAnyVoted=isVoted
@@ -19,13 +19,13 @@
           <dl class="row pt-4 pb-4">
             {{#if isVoted}}
               <dt class="col-5 col-sm-4">Total votes</dt>
-              <dd class="col-7 col-sm-8">{{questionary.totalVotesCount}}</dd>
+              <dd class="col-7 col-sm-8">{{poll.totalVotesCount}}</dd>
               <dt class="col-5 col-sm-4 mb-2">Started at</dt>
-              <dd class="col-7 col-sm-8 mb-2">{{questionary.formattedCreatedAt}}</dd>
+              <dd class="col-7 col-sm-8 mb-2">{{poll.formattedCreatedAt}}</dd>
             {{/if}}
             <dd class="col-12">
               {{sharing-box
-                text=questionary.title
+                text=poll.title
               }}
             </dd>
           </dl>

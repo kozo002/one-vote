@@ -8,7 +8,7 @@ const {
 
 export default DS.Model.extend({
   body: attr("string"),
-  questionary: belongsTo("questionary"),
+  poll: belongsTo("poll"),
   votes: attr("array"),
 
   isVotedBy(guestKey) {

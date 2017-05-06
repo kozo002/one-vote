@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  votedIndex: Ember.computed("questionary.choices.@each.votes", function() {
-    const choices = this.get("questionary.choices");
+  votedIndex: Ember.computed("poll.choices.@each.votes", function() {
+    const choices = this.get("poll.choices");
     const guestKey = this.guestKey.get("value");
     let result;
     choices.forEach((choice, i) => {
