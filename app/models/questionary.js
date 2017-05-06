@@ -52,20 +52,20 @@ export default DS.Model.extend({
     return !this.get("isValid");
   }),
 
-  totalVotesCount: Ember.computed("choices.@each.votesCount", function() {
+  totalVotesCount: Ember.computed("choices.@each.votes", function() {
     return this.get("choices").reduce((res, choice) => {
-      res += choice.get("votesCount");
+      res += choice.get("votes.length");
       return res;
     }, 0);
   }),
 
-  eachChoicesVotesCountChanged: Ember.observer("choices.@each.votesCount", function() {
+  eachChoicesVotesCountChanged: Ember.observer("choices.@each.votes", function() {
     const total = this.get("totalVotesCount");
     const choices = this.get("choices");
 
     if (total > 0) {
       choices.forEach((choice) => {
-        const rate = Math.floor(choice.get("votesCount") / total * 100);
+        const rate = Math.floor(choice.get("votes.length") / total * 100);
         choice.set("rate", rate);
       });
     } else {

@@ -11,10 +11,6 @@ export default DS.Model.extend({
   questionary: belongsTo("questionary"),
   votes: attr("array"),
 
-  votesCount: Ember.computed("votes.[]", function() {
-    return this.get("votes.length");
-  }),
-
   isVotedBy(guestKey) {
     const votes = this.get("votes") || [];
     const vote = votes.find((gk) => gk === guestKey);

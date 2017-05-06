@@ -7,6 +7,10 @@ export default Ember.Component.extend({
     return isAnyVoted && !isVoted;
   }),
 
+  rateBarWidth: Ember.computed("choice.rate", function() {
+    return new Ember.String.htmlSafe(`width:${this.get("choice.rate")}%;`);
+  }),
+
   actions: {
     vote() {
       this.sendAction("onVote", this.get("choice"));
