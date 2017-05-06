@@ -13,7 +13,7 @@ export default DS.Model.extend({
 
   isVotedBy(guestKey) {
     const votes = this.get("votes") || [];
-    const vote = votes.find((gk) => gk === guestKey);
+    const vote = votes.find((gk) => gk.guestKey === guestKey);
     return !Ember.isEmpty(vote);
   },
 
@@ -21,14 +21,17 @@ export default DS.Model.extend({
     if (this.isVotedBy(guestKey)) { return; }
 
     const votes = this.get("votes") || [];
-    votes.pushObject(guestKey);
+    votes.pushObject({
+      guestKey,
+      createdAt: new Date(),
+    });
     this.set("votes", votes);
     this.save();
   },
 
   loseVoteBy(guestKey) {
     this.set("votes", this.get("votes").filter((gk) => {
-      return gk !== guestKey;
+      return gk.guestKey !== guestKey;
     }));
   }
 });
