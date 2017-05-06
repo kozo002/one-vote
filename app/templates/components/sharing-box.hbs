@@ -1,0 +1,40 @@
+<p>
+  <a href="#" class="text-muted" {{action "toggle"}}>
+    {{#if isOpened}}
+      <i class="material-icons"><small>close</small></i>
+      Close
+    {{else}}
+      <i class="material-icons"><small>link</small></i>
+      Share this link
+    {{/if}}
+  </a>
+</p>
+<p class={{buttonsClassName}}>
+  <a href={{twitterURL}} class="sharing-box__button" target="_blank">
+    <img src="/images/icon-twitter.svg" />
+    <span class="sharing-box__button-title">twitter</span>
+  </a>
+  <a href={{facebookURL}} class="sharing-box__button" target="_blank">
+    <img src="/images/icon-facebook.svg" />
+    <span class="sharing-box__button-title">facebook</span>
+  </a>
+  <div class="sharing-box__button-wrapper">
+    {{#if isShowingUpSucceededTooltip}}
+      <div class="tooltip tooltip-top tooltip-success">
+        <div class="tooltip-inner">Copied!!</div>
+      </div>
+    {{/if}}
+    {{#if isShowingUpFailedTooltip}}
+      <div class="tooltip tooltip-top tooltip-danger">
+        <div class="tooltip-inner">Error...</div>
+      </div>
+    {{/if}}
+    {{#copy-button
+      clipboardText=clipboardURL
+      success=(action "successClipboard")
+      error=(action "errorClipboard")}}
+      <i class="material-icons">link</i>
+      <span class="sharing-box__button-title">copy link</span>
+    {{/copy-button}}
+  </div>
+</p>

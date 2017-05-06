@@ -24,10 +24,9 @@
               <dd class="col-7 col-sm-8 mb-2">{{questionary.formattedCreatedAt}}</dd>
             {{/if}}
             <dd class="col-12">
-              <a href="#" class="text-muted">
-                <i class="material-icons"><small>link</small></i>
-                Share this link
-              </a>
+              {{sharing-box
+                text=questionary.title
+              }}
             </dd>
           </dl>
         </div>

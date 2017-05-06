@@ -1,0 +1,21 @@
+.tooltip {
+  &.tooltip-success {
+    .tooltip-inner {
+      background-color: $brand-success;
+
+      &::before {
+        border-top-color: $brand-success;
+      }
+    }
+  }
+
+  &.tooltip-danger {
+    .tooltip-inner {
+      background-color: $brand-danger;
+
+      &::before {
+        border-top-color: $brand-danger;
+      }
+    }
+  }
+}

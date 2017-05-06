@@ -1,0 +1,67 @@
+.sharing-box {
+  &__buttons {
+    transition-property: opacity;
+    transition-duration: .25s;
+    opacity: 0;
+    display: none;
+    text-align: center;
+
+    &.active {
+      opacity: 1;
+      display: block;
+    }
+  }
+
+  %base-button {
+    display: inline-block;
+    padding: 12px;
+    width: 85px;
+    border: 0;
+    background-color: transparent;
+    color: $gray-light;
+    text-align: center;
+    vertical-align: top;
+
+    img {
+      vertical-align: top;
+      width: 40px;
+      height: 40px;
+    }
+
+    .material-icons {
+      font-size: 40px;
+      vertical-align: top;
+    }
+  }
+
+  &__button {
+    @extend %base-button;
+
+    &--material-icons {
+      @extend %base-button;
+      padding: 12px;
+    }
+
+    &-title {
+      display: inline-block;
+      padding-top: 8px;
+      font-size: 11px;
+    }
+  }
+  .copy-btn {
+    @extend %base-button;
+  }
+
+  &__button-wrapper {
+    display: inline-block;
+    position: relative;
+
+    .tooltip {
+      opacity: 1;
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
