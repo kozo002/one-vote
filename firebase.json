@@ -3,6 +3,15 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "public"
+    "public": "dist",
+    "rewrites": [{
+      "source": "**",
+      "destination": "/index.html"
+    }],
+    "redirects": [{
+      "source": "/index.html",
+      "destination": "/",
+      "type": 301
+    }]
   }
 }
