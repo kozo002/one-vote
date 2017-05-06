@@ -56,7 +56,7 @@ export default DS.Model.extend({
 
   totalVotesCount: Ember.computed("choices.@each.votes", function() {
     return this.get("choices").reduce((res, choice) => {
-      res += choice.get("votes.length");
+      res += choice.get("votes.length") || 0;
       return res;
     }, 0);
   }),
@@ -67,7 +67,8 @@ export default DS.Model.extend({
 
     if (total > 0) {
       choices.forEach((choice) => {
-        const rate = Math.floor(choice.get("votes.length") / total * 100);
+        const length = choice.get("votes.length") || 0;
+        const rate = Math.floor(length / total * 100);
         choice.set("rate", rate);
       });
     } else {
