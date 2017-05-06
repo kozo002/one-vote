@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 import times from 'npm:lodash/times';
+import moment from 'npm:moment-timezone';
 
 const {
   attr,
@@ -10,6 +11,7 @@ const {
 export default DS.Model.extend({
   title: attr("string"),
   choices: hasMany("choice", { async: true, inverse: null }),
+  createdAt: attr("date"),
 
   errors: [],
 
@@ -73,10 +75,26 @@ export default DS.Model.extend({
     }
   }),
 
+  formattedCreatedAt: Ember.computed("createdAt", function() {
+    const createdAt = this.get("createdAt");
+    if (createdAt == null) { return; }
+    return moment(createdAt)
+      .tz("Asia/Tokyo")
+      .format("YYYY/MM/DD HH:mm");
+  }),
+
   saveWithChoices() {
+    // break if invalid
     if (!this.get("isValid")) { return; }
+
+    // select filled choices
     const choices = this.get("choices").filter((c) => Ember.isPresent(c.get("body")));
     this.set("choices", choices);
+
+    // set timestamp
+    this.set("createdAt", new Date());
+
+    // save all
     const choiceSaves = choices.map((choice) => choice.save());
     return Ember.RSVP.all(choiceSaves).then(() => this.save());
   },

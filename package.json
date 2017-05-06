@@ -46,6 +46,7 @@
     "emberfire": "2.0.6",
     "loader.js": "^4.0.10",
     "lodash": "^4.17.4",
+    "moment-timezone": "^0.5.13",
     "uuid": "^3.0.1"
   },
   "engines": {
