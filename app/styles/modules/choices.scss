@@ -58,6 +58,10 @@
     bottom: 0;
     z-index: 1;
     border-radius: 3px;
+
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      padding-right: 40px;
+    }
   }
 
   &__fg {
@@ -86,6 +90,11 @@
     @media (max-width: map-get($grid-breakpoints, sm)) {
       right: 4px;
     }
+  }
+
+  &__rate-bar-wrapper {
+    position: relative;
+    height: 100%;
   }
 
   &__rate-bar {

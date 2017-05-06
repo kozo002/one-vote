@@ -1,7 +1,9 @@
 <li class="choice {{if isVoted "active"}}">
   <div class="choice__bg">
     {{#if isAnyVoted}}
-      <div class="choice__rate-bar" style={{rateBarWidth}}></div>
+      <div class="choice__rate-bar-wrapper">
+        <div class="choice__rate-bar" style={{rateBarWidth}}></div>
+      </div>
     {{/if}}
   </div>
   <div class="choice__fg">
