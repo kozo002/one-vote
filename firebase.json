@@ -12,6 +12,15 @@
       "source": "/index.html",
       "destination": "/",
       "type": 301
-    }]
+    }],
+    "headers": [
+      {
+        "source": "**/*.@(js|css)",
+        "headers": [{
+          "key": "Cache-Control",
+          "value": "max-age=300"
+        }]
+      }
+    ]
   }
 }
