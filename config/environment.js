@@ -57,6 +57,13 @@ module.exports = function(environment) {
       storageBucket: process.env.PROD_FIREBASE_STORAGE_BUCKET,
       messagingSenderId: process.env.PROD_FIREBASE_MESSAGING_SENDER_ID,
     };
+
+    if (process.env.PROD_GOOGLE_ANALYTICS_ID != null &&
+        process.env.PROD_GOOGLE_ANALYTICS_ID != "") {
+      ENV.googleAnalytics = {
+        webPropertyId: process.env.PROD_GOOGLE_ANALYTICS_ID
+      };
+    }
   }
 
   return ENV;
